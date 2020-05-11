@@ -11,6 +11,7 @@ import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
 import protocols.AdminProtocol.{CreateUser, LoginUser, User, loginUser}
 import views.html._
+import views.html.admin.admin
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration.DurationInt
@@ -23,6 +24,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
                                indexTemplate: index,
                                loginTemplate: loginForm,
                                regTemplate: registrationForm,
+                               adminTemplate: admin,
                               )
                               (implicit val ec: ExecutionContext)
   extends BaseController with LazyLogging {
@@ -39,6 +41,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
 
   def registration = Action {
     Ok(regTemplate())
+  }
+
+  def adminPage = Action {
+    Ok(adminTemplate())
   }
 
   def createUser: Action[JsValue] = Action.async(parse.json) { implicit request => {

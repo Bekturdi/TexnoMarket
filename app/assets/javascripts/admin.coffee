@@ -61,6 +61,7 @@ $ ->
       .done (response) ->
         toastr.success(response)
         ko.mapping.fromJS(defaultUserData, {}, vm.user)
+        window.location.href = '/admin-page'
 
   vm.loginUser = ->
     toastr.clear()

@@ -4,6 +4,7 @@ GET     /login-page                 controllers.HomeController.loginForm
 GET     /registarion-page           controllers.HomeController.registration
 POST    /create-user                controllers.HomeController.createUser
 POST    /login-user                 controllers.HomeController.loginUsers
+GET     /admin-page                 controllers.HomeController.adminPage
 
 
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
