@@ -12,11 +12,14 @@ $ ->
     phone: 'phone'
     computer: 'computer'
 
-  vm = ko.mapping.fromJS
-    page: Glob.page
+  defaultUserData =
     username: ''
     password: ''
     email: ''
+
+  vm = ko.mapping.fromJS
+    page: Glob.page
+    user: defaultUserData
 
   vm.selectedPage = (page) ->
     if (page is Page.phone)
@@ -34,20 +37,20 @@ $ ->
 
   vm.createUser = ->
     toastr.clear()
-    if (!vm.username())
+    if (!vm.user.username())
       toastr.error("Foydalanuvchi nomini kiriting!")
       return no
-    else if (!vm.password())
+    else if (!vm.user.password())
       toastr.error("Passwordni kiriting!")
       return no
-    else if (!vm.email())
+    else if (!vm.user.email())
       toastr.error("Emailni kiriting!")
       return no
     else
       data =
-        username: vm.username()
-        password: vm.password()
-        email: vm.email()
+        username: vm.user.username()
+        password: vm.user.password()
+        email: vm.user.email()
       $.ajax
         url: apiUrl.createUser
         type: 'POST'
@@ -57,6 +60,7 @@ $ ->
       .fail handleError
       .done (response) ->
         toastr.success(response)
+        ko.mapping.fromJS(defaultUserData, {}, vm.user)
 
   vm.loginUser = ->
     toastr.clear()
