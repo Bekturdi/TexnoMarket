@@ -1,0 +1,207 @@
+@this(webJarsUtil: org.webjars.play.WebJarsUtil)
+@(page: Option[String])
+@import views.html.main
+@main("TexnoMarket.uz", webJarsUtil) {
+  <script>
+          var Glob = {
+            page: '@page.getOrElse("card")'
+          }
+  </script>
+  <nav class="navbar navbar-expand-lg navbar-light1 ">
+    <div class="container">
+      <a class="navbar-brand text-success" href="#"><strong style="font-family: FreeMono">TexnoMarket.uz</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">CHEGIRMALAR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">YETKAZIB BERISH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">YORDAM</a>
+          </li>
+        </ul>
+        <div class="row text-right">
+          <div class="col-sm-12"><span class="contact-name">ISHONCH RAQAMI</span></div>
+          <div class="col-sm-12"><span class="contact-number">+998 (99) 967 65 03</span></div>
+        </div>&emsp;&emsp;
+        <div class=""><a class="btn btn-outline-success" href="@controllers.routes.HomeController.loginForm()">
+          Kirish <i class="far fa-arrow-alt-circle-right"></i></a></div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-light-two ">
+    <div class="container">
+      <div class="collapse navbar-collapse pt-2 pb-2">
+        <ul class="navbar-nav ">
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+              <i class="fa fa-align-left ml-1 mr-3"></i>KATEGORIYALAR<i
+            class="fa fa-angle-down ml-3 mr-1"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item smartfon" href="" data-bind="click: vm.selectedPage.bind($data, 'phone')"><img
+              src="@routes.Assets.versioned("images/phone.png")"
+              alt="Telefon, gadjet, aksessuarlar" width="25" height="25">&emsp;Smartfonlar&emsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-right"></i></a>
+              <a class="dropdown-item smartfon" href="" data-bind="click: vm.selectedPage.bind($data, 'computer')">
+                <img
+                src="@routes.Assets.versioned("images/computer.png")"
+                alt="Noutbuk, printer, kompyuterlar" width="25" height="25" class="dropdown__icon">&emsp;Kompyuterlar&emsp;&emsp;&emsp;<i class="fa fa-angle-right"></i></a>
+              <a class="dropdown-item  smartfon" href="" ><img src="@routes.Assets.versioned("images/maishiy.png")" alt="Maishiy texnika" width="25" height="25">&emsp;Maishiy texnikalar&emsp;<i class="fa fa-angle-right"></i></a>
+            </div>
+          </li>
+        </ul>
+        <form class="ml-5 form-inline">
+          <div class="input-group ">
+            <input type="text" class="form-control form-flex " size="56" placeholder="Mahsulotni qidirish..."
+            aria-label="Mahsulotni qidirish"
+            aria-describedby="basic-addon1">
+            <div class="input-group-prepend search-btn ">
+              <button class="input-group-text search-btn-one" id="basic-addon1">Qidirish</button>
+            </div>
+          </div>
+        </form>
+        <div class="ml-5">
+          <a href="#" class="btn btn-outline-success">
+            <i class="fa fa-shopping-cart "></i>&emsp;
+            <span class="font-18"><strong>Xaridlar savati</strong></span>&emsp;
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  @card()
+  @phone()
+  @computer()
+
+
+  <footer>
+
+    <div class="footer ">
+      <div class="footer-icon-line">
+        <div class="container">
+          <div class="row ">
+            <div class="col-md-3 offers-block">
+              <a href="#" class="d-flex align-items-center">
+                <div class=""></div>
+                <i class="fas fa-shuttle-van fa-3x footer-icon"></i>
+                <h5>Bepul yetkazib<br>berish</h5>
+              </a>
+            </div>
+            <div class="col-md-3 offers-block">
+              <a href="#" class="d-flex align-items-center">
+                <i class="fa fa-wallet fa-3x footer-icon"></i>
+                <h5>Qulay usulda to‘lang</h5>
+              </a>
+            </div>
+            <div class="col-md-3 offers-block">
+              <a href="#" class="d-flex align-items-center">
+                <i class="fa fa-user-cog fa-3x footer-icon"></i>
+                <h5>Online ko‘mak</h5>
+              </a>
+            </div>
+            <div class="col-md-3 offers-block">
+              <a href="#" class="d-flex align-items-center">
+                <i class="fa fa-check-square fa-3x footer-icon"></i>
+                <h5>Sifat kafolati</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-card">
+      <div class="container mb-0">
+        <div class="row">
+          <div class="col-md-2 text-center pt-2 text-dark">
+            <h3>BIZ QABUL QILAMIZ!</h3>
+          </div>
+          <div class="col-md-10">
+            <a href="#"><img src="@routes.Assets.versioned("images/click.jpg")" alt="click"></a>
+            <a href="#"><img src="@routes.Assets.versioned("images/payme.jpg")" alt="payme"></a>
+            <a href="#"><img src="@routes.Assets.versioned("images/webmoney.jpg")" alt="webmoney"></a>
+            <a href="#"><img src="@routes.Assets.versioned("images/paypal.jpg")" alt="paypal"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 align-items-center">
+          <img class="text-center" src="@routes.Assets.versioned("images/c18d90c8-9d9b-482b-a2c7-c7fdc7d87ff7_200x200.png")" style="width: 100%; " alt="logo">
+        </div>
+        <div class="col-md-3 my-4">
+          <ul class="footer-items list-unstyled">
+            <li class="footer-item">
+              <a class="footer-link" href="#">Biz haqimizda</a>
+            </li>
+            <li class="footer-item">
+              <a class="footer-link" href="#">Shaxsiy ma’lumotlar bilan ishlash siyosati</a>
+            </li>
+            <li class="footer-item">
+              <a class="footer-link" href="#">Ommaviy oferta</a>
+            </li>
+            <li class="footer-item">
+              <a class="footer-link" href="#">Eco-friendly</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3 my-4">
+          <ul class="list-unstyled">
+            <li>
+              <a href="#">Bo‘sh ish o‘rinlari</a>
+            </li>
+            <li>
+              <a href="#">To‘lov va yetkazib berish xizmati</a>
+            </li>
+            <li>
+              <a href="#">To‘lovni qaytarish va tovarlarni almashtirish</a>
+            </li>
+            <li>
+              <a href="#">Bonuslar dasturi</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3 my-4">
+          <p>Chegirmalar, aksiyalar va qiziqarli takliflar haqida ma‘lumot oling.</p>
+          <input type="email" placeholder="E-mail" class="form-control py-2 px-3">
+          <button class="my-3 btn btn-danger btn-block" type="submit">OBUNA BO'LISH</button>
+          <button class="btn btn-block btn-success ">SHARH QOLDIRISH</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-icon-link">
+      <div class="container">
+        <div class="row ">
+          <div class="col-md-4">
+            <p>TexnoMarket © 2020. Barcha huquqlar himoyalangan</p>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-unstyled d-flex justify-content-center">
+              <li><a href="#"><img src="@routes.Assets.versioned("images/132px-Instagram_logo_2016.svg.png")" class="img-brand"></a></li>
+              <li><a href="#"><img src="@routes.Assets.versioned("images/600px-YouTube_social_white_square_(2017).svg.png")" class="img-brand"></a></li>
+              <li><a href="#"><img src="@routes.Assets.versioned("images/1280px-Facebook_f_logo_(2019).svg.png")" class="img-brand"></a></li>
+              <li><a href="#"><img src="@routes.Assets.versioned("images/logo%20telegram.png")" class="img-brand"></a></li>
+              <li><a href="#"><img src="@routes.Assets.versioned("images/Twitter_bird_logo_2012.svg.png")" class="img-brand"></a></li>
+              <li><a href="#"><i class="fa fa-youtube-play  fa-2x" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+}

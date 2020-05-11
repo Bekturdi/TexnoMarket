@@ -1,0 +1,102 @@
+@import views.html.main
+@this(webJarsUtil: org.webjars.play.WebJarsUtil)
+@main("TexnoMarket.uz", webJarsUtil) {
+
+  <div class="row bg-secondary h-100">
+    <div class="offset-4 col-sm-4 mt-4 ">
+        <!-- Material form login -->
+      <div class="card mb-3">
+
+        <div class="card-header bg-info text-white text-center py-3">
+          <i class="fa fa-user-circle fa-3x "></i> <strong class="pl-2 " style="font-size: 22px;">Sign up</strong>
+        </div>
+
+          <!--Card content-->
+        <div class="card-body px-lg-5 pt-3">
+
+            <!-- Form -->
+          <form style="color: #757575;">
+
+              <!-- Email -->
+            <div class="md-form ">
+              <label>Username</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Username..." data-bind="value: vm.username">
+                <div class="input-group-prepend">
+                  <span class="fa fa-user input-group-text pt-2"></span>
+                </div>
+              </div>
+            </div>
+
+              <!-- Password -->
+            <div class="md-form mt-2">
+              <label >Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" placeholder="Password" data-bind="value: vm.password">
+                <div class="input-group-prepend">
+                  <span class="fa fa-lock input-group-text pt-2"></span>
+                </div>
+              </div>
+            </div>
+
+              <!-- Email -->
+            <div class="md-form mt-2">
+              <label >Email</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Email.com" data-bind="value: vm.email">
+                <div class="input-group-prepend">
+                  <span class="far fa-envelope input-group-text pt-2"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-around mt-4">
+              <div>
+                  <!-- Remember me -->
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
+                  <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                </div>
+              </div>
+              <div>
+                  <!-- Forgot password -->
+                <a href="">Forgot password?</a>
+              </div>
+            </div>
+
+              <!-- Sign in button -->
+            <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" data-bind="click: vm.createUser">
+              Sign up</button>
+          </form>
+          <div class="text-center">
+              <!-- Register -->
+            <p>Not a member?
+              <a href="#">Register</a>
+            </p>
+
+              <!-- Social login -->
+            <p>or sign in with:</p>
+            <a type="button" class="btn-floating btn-fb btn-sm">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a type="button" class="btn-floating btn-tw btn-sm">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a type="button" class="btn-floating btn-li btn-sm">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a type="button" class="btn-floating btn-git btn-sm">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+
+            <!-- Form -->
+
+        </div>
+
+      </div>
+        <!-- Material form login -->
+    </div>
+  </div>
+
+}

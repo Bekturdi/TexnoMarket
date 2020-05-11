@@ -1,0 +1,413 @@
+@()
+
+<div data-bind="visible: vm.page() == 'card'">
+  <div class="row reklama " >
+    <div class="col-sm-1 reklama-one">
+    </div>
+    <div class="col-sm-6">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner slide-img">
+          <div class="carousel-item active">
+            <img src="@routes.Assets.versioned("images/carusel/6cYVGLiyVutoOu10vokeTCCejilNc2uGAWwVpuVPAtZl4xxrdba7pXcqLYSZ.jpeg")" class="slide-img" alt="image1">
+          </div>
+          <div class="carousel-item">
+            <img src="@routes.Assets.versioned("images/carusel/d67ACUHK65qs6R0GV0kFiaGpbimEYEX8DHms6YNH6wv8FaSUusCjdai1Jdkm.jpeg")" class="slide-img" alt="image2">
+          </div>
+          <div class="carousel-item">
+            <img src="@routes.Assets.versioned("images/carusel/dkeMHDPMvECqas0zyTnMyqmQvNHd99BFYnpnEfnRWS1YlaRDzseJOrCQ9wYS.jpeg")" class="slide-img" alt="image3">
+          </div>
+          <div class="carousel-item">
+            <img src="@routes.Assets.versioned("images/carusel/g8coOwSgYeXMhufeR6Qsk2kdkuUU3tzzzyXDctFBXyFobNXz9kGaqNBmyG9r.jpeg")" class="slide-img" alt="image4">
+          </div>
+          <div class="carousel-item">
+            <img src="@routes.Assets.versioned("images/carusel/IQzlDNAWPWL74bke7wwa0uUDeNA4gBX96cCPTisPXryLSXJvb20dDGVz45j8.jpeg")" class="slide-img" alt="image5">
+          </div>
+          <div class="carousel-item">
+            <img src="@routes.Assets.versioned("images/carusel/uJJlGBxpblGYt8K48c1Bki7HMO6I2LvkoyoTV58V4RcOTUPJJ4fCwufM1tqI.jpeg")" class="slide-img" alt="image6">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <img src="https://olcha.uz/uploads/thumb/right_advertise_oz/360x395/KK/KK/KA/1587042306.jpg" class="reklama-two" alt="">
+    </div>
+    <div class="col-sm-2 reklama-three">
+    </div>
+  </div>
+
+  <div class="pt-3 buyrutma">
+    <div class="container">
+      <h1 class="title float-left ">Buyurtmani qanday amalga oshiraman?</h1>
+      <div class="clearfix"></div>
+        <!-- <a href="https://olcha.uz/oz/page/how-to-order"> -->
+      <div class="row mt-2">
+        <div class="col-md-3 ">
+          <i class="fas fa-hand-point-up fa-2x icon-border float-left"></i>
+          <div class="">
+            <h1 class="text-center">1 - Qadam</h1>
+            <p class="text-right">Katalogdagi o‘zingiz istagan mahsulotni tanlang yoki qidiruvdan foydalaning.</p>
+          </div>
+        </div>
+        <div class="col-md-3 ">
+          <i class="fa fa-shopping-cart fa-2x icon-border float-left"></i>
+          <div class="">
+            <h1 class="text-center">2 - Qadam</h1>
+            <p class="text-right">"Savatga qo‘shish" tugmasini bosib, mahsulotni savatga qo‘shing.</p>
+          </div>
+        </div>
+        <div class="col-md-3 ">
+          <i class="fa fa-file fa-2x icon-border float-left"></i>
+          <div class="">
+            <h1 class="text-center">3 - Qadam</h1>
+            <p class="text-right">Buyurtmani rasmiylashtirish: kerakli miqdordagi mahsulotni ko‘rsating.</p>
+          </div>
+        </div>
+        <div class="col-md-3 ">
+          <i class="fa fa-box fa-2x icon-border float-left"></i>
+          <div class="">
+            <h1 class="text-center">4 - Qadam</h1>
+            <p class="text-right">O‘zingizga qulay manzilda buyurtmangizni qabul qiling.</p>
+          </div>
+        </div>
+      </div>
+        <!-- </a> -->
+    </div>
+      <!-- end of container -->
+  </div>
+
+
+  <div class="card-view">
+    <div class="container ">
+      <h4 CLASS="py-4"><strong>KO`P TANLANGAN MAHSULOTLAR</strong></h4>
+      <div class="row ">
+        <div class="col-sm-12">
+            <!--Carousel Wrapper-->
+          <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+              <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+
+                <!--First slide-->
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="card product mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/SamsungA71.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Samsung Galaxy A71 6/128GB, Prism Crush Black</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>4 141 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card product mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/xiomiredmi8.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Xiaomi Redmi 8 4/64GB, Black (Global)</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>1 586 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/xiomi9.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Xiaomi Redmi Note 9S 4/64GB, Glacier White</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>2 262 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/planshet.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Apple Ipad Air 3 4G (2019) 10.5" 64GB Wi-Fi, Silver</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>6 262 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <!--/.First slide-->
+
+                <!--Second slide-->
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/bque.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">BQ 5730L Magic C 2/16GB, Wine Red</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>1 135 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/vivo.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Vivo Y12 3/64GB, Blue</p>
+                        <br>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>825 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/a20s.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Samsung Galaxy A20s 3/32GB, Blue A207</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>1 818 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/apple11.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Apple iPhone 11 Pro Max Dual 64GB, Grey</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>13 837 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <!--/.Second slide-->
+
+                <!--Third slide-->
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/huawuipZ.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Telefonlar</h4>
+                        <p class="card-text">Huawei P Smart Z 4/64GB, Black</p>
+                        <br>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>2 230 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/monitor1.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Monitorlar</h4>
+                        <p class="card-text">LG 24GL600F</p>
+                        <br>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>2 303 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/proektor.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Proektorlar</h4>
+                        <p class="card-text">Proektor Epson EB-X400 HDMI</p>
+                        <br>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>4 293 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                      src="@routes.Assets.versioned("images/card/watches.jpeg")"
+                      alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title text-secondary">Smart Watches</h4>
+                        <p class="card-text">Xiaomi Mi Band 4, Black (Chinese version)</p>
+                        <div class="text-center text-info" >
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="text-center pt-2"><h4>303 000 so`m</h4></div>
+                        <div class=""><a class="btn btn-block btn-outline-success" href="">
+                          Savatchaga qo`shish <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <!--/.Third slide-->
+
+            </div>
+              <!--/.Slides-->
+
+              <!--Controls-->
+            <div class="controls-top text-center py-3">
+              <a class="btn btn-outline-success btn-rounded" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+              <a class="btn btn-outline-success btn-rounded" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+            </div>
+              <!--/.Controls-->
+
+          </div>
+            <!--/.Carousel Wrapper-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
