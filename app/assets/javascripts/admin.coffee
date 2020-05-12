@@ -11,6 +11,7 @@ $ ->
     card: 'card'
     phone: 'phone'
     computer: 'computer'
+    phoneDash: 'phoneDash'
 
   defaultUserData =
     username: ''
@@ -26,6 +27,8 @@ $ ->
       vm.page(Page.phone)
     else if ( page is Page.computer)
       vm.page(Page.computer)
+    else if ( page is Page.phoneDash)
+      vm.page(Page.phoneDash)
     else
       vm.page(Page.card)
 

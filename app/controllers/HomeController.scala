@@ -44,7 +44,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
   }
 
   def adminPage = Action {
-    Ok(adminTemplate())
+    Ok(adminTemplate(Some("")))
   }
 
   def createUser: Action[JsValue] = Action.async(parse.json) { implicit request => {

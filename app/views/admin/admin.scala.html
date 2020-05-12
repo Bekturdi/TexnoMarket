@@ -1,5 +1,12 @@
 @this(webJarsUtil: org.webjars.play.WebJarsUtil)
+@(page: Option[String])
+@import views.html.admin.phoneDash
 @main("Admin panel", webJarsUtil) {
+  <script>
+          var Glob = {
+            page: '@page.getOrElse("")'
+          }
+  </script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -32,6 +39,7 @@
   <link rel="stylesheet" href="@routes.Assets.versioned("assets/css/shared/style.css")">
   <link rel="stylesheet" href="@routes.Assets.versioned("assets/css/demo_1/style.css")">
   <link rel="shortcut icon" href="@routes.Assets.versioned("assets/images/favicon.png")" />
+  <script src="@routes.Assets.versioned("javascripts/admin.js")" type="text/javascript"></script>
 
   <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
@@ -213,7 +221,7 @@
             <div class="collapse" id="ui-basic-dash">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="">Telefonlar</a>
+                  <a class="nav-link" href="" data-bind="click: vm.selectedPage.bind($data, 'phoneDash')">Telefonlar</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="">Kompyuterlar</a>
@@ -242,13 +250,15 @@
       </nav>
         <!-- partial -->
       <div class="main-panel" style="margin-left: 270px;">
-        <div class="content-wrapper "></div>
+        <div class="content-wrapper ">
+          @phoneDash()
+        </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">
-              Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>
+              Copyright © 2019 TexnoMarket
               . All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
               Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
