@@ -70,5 +70,5 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
         Ok(err)
     }
   }
-  }
+}
 }

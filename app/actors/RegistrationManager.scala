@@ -7,7 +7,7 @@ import com.typesafe.scalalogging.LazyLogging
 import dao.UserDao
 import javax.inject.Inject
 import play.api.{Configuration, Environment}
-import protocols.AdminProtocol.{CreateUser, User}
+import protocols.AdminProtocol.{CreateUser, LoginUser, User, loginUser}
 
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{ExecutionContext, Future}
@@ -27,6 +27,9 @@ class RegistrationManager @Inject()(val environment: Environment,
     case CreateUser(data) =>
       createUser(data).pipeTo(sender())
 
+//    case LoginUser(data) =>
+//      loginUser(data).pipeTo(sender())
+//
     case _ => logger.info(s"received unknown message")
   }
 
@@ -41,4 +44,15 @@ class RegistrationManager @Inject()(val environment: Environment,
         Right(data.username + " nomli foydalanuvchi ro`yhatdan muvoffaqiyatli o`tdi!")
     })
   }
+//
+//  private def loginUser(data: loginUser): Future[Either[String, String]] = {
+//    (for {
+//      response <- userDao.findLoginUser(data.username)
+//    } yield response match {
+//      case Some(count) =>
+//        Left(count.username + " foydalanuvchi nomi bilan password ni to`g`ri kiriting!")
+//      case None =>
+//        Right(data.username + "asda")
+//    })
+//  }
 }

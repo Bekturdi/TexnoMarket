@@ -19,4 +19,5 @@ object AdminProtocol {
                        username: String,
                        password: String)
 
+  implicit val loginUserFormat: OFormat[loginUser] = Json.format[loginUser]
 }

@@ -67,17 +67,18 @@ $ ->
         window.location.href = '/admin-page'
 
   vm.loginUser = ->
+    console.log("data keldi")
     toastr.clear()
-    if (!vm.username())
+    if (!vm.user.username())
       toastr.error("Foydalanuvchi nomini kiriting!")
       return no
-    else if (!vm.password())
+    else if (!vm.user.password())
       toastr.error("Passwordni kiriting!")
       return no
     else
       data =
-        username: vm.username()
-        password: vm.password()
+        username: vm.user.username()
+        password: vm.user.password()
       $.ajax
         url: apiUrl.loginUser
         type: 'POST'
@@ -87,6 +88,7 @@ $ ->
       .fail handleError
       .done (response) ->
         toastr.success(response)
+        window.location.href = '/admin-page'
 
 
   ko.applyBindings {vm}
