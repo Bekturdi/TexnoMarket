@@ -44,27 +44,27 @@
     </div>
   </div>
     <!-- Add Modal HTML -->
-  <div id="addEmployeeModal" class="modal fade">
+  <div id="addEmployeeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addDocumentTypeTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <form class="">
           <div class="modal-header px-3">
-            <h4 class="modal-title">Telefon qo`shish</h4>
+            <h4 class="modal-title" id="addDocumentTitle">Telefon qo`shish</h4>
             <button type="button" class="close pl-4" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body px-3">
             <div class="form-group">
               <label>Nomi</label>
-              <input type="text" class="form-control" >
+              <input type="text" class="form-control" placeholder="nomi" data-bind="value: vm.phone.phoneName">
             </div>
             <div class="form-group">
               <label>Modeli</label>
-              <input type="email" class="form-control" >
+              <input type="email" class="form-control" placeholder="model" data-bind="value: vm.phone.phoneModel">
             </div>
             <div class="form-group">
               <label>Tezkor xotirasi</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="tezkor xotira" >
+                <input type="text" class="form-control" placeholder="tezkor xotira" data-bind="value: vm.phone.phoneRam">
                 <div class="input-group-append">
                   <span class="input-group-text bg-secondary" >Gb</span>
                 </div>
@@ -73,7 +73,7 @@
             <div class="form-group">
               <label>Doimiy xotirasi</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="doimiy xotira" >
+                <input type="text" class="form-control" placeholder="doimiy xotira" data-bind="value: vm.phone.phoneHdd">
                 <div class="input-group-append">
                   <span class="input-group-text bg-secondary" >Gb</span>
                 </div>
@@ -82,7 +82,7 @@
             <div class="form-group">
               <label>Bahosi</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="bahosi" >
+                <input type="text" class="form-control" placeholder="bahosi" data-bind="value: vm.phone.phonePrice">
                 <div class="input-group-append">
                   <span class="input-group-text bg-secondary" >so`m</span>
                 </div>
@@ -91,9 +91,10 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Orqaga</button>
-            <button type="submit" class="btn btn-success" >Qo`shish</button>
+            <button type="submit" class="btn btn-success" data-bind="click: vm.addPhone">Qo`shish</button>
           </div>
         </form>
+
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ $ ->
   apiUrl =
     createUser: '/create-user'
     loginUser: '/login-user'
+    addPhone: '/add-phone'
 
   Page =
     card: 'card'
@@ -18,9 +19,17 @@ $ ->
     password: ''
     email: ''
 
+  defaultPhoneData =
+    phoneName: ''
+    phoneModel: ''
+    phoneRam: ''
+    phoneHdd: ''
+    phonePrice: ''
+
   vm = ko.mapping.fromJS
     page: Glob.page
     user: defaultUserData
+    phone: defaultPhoneData
 
   vm.selectedPage = (page) ->
     if (page is Page.phone)
@@ -67,7 +76,6 @@ $ ->
         window.location.href = '/admin-page'
 
   vm.loginUser = ->
-    console.log("data keldi")
     toastr.clear()
     if (!vm.user.username())
       toastr.error("Foydalanuvchi nomini kiriting!")
@@ -89,6 +97,44 @@ $ ->
       .done (response) ->
         toastr.success(response)
         window.location.href = '/admin-page'
+
+  vm.addPhone = ->
+    toastr.clear()
+    if (!vm.phone.phoneName())
+      toastr.error("telefon nomini kiriting!")
+      return no
+    else if (!vm.phone.phoneModel())
+      toastr.error("telefon modelini kiriting! \n Masalan Samsung, Apple, Huawei")
+      return no
+    else if (!vm.phone.phoneRam())
+      toastr.error("telefon tezkor xotirasini kiriting!")
+      return no
+    else if (!vm.phone.phoneHdd())
+      toastr.error("telefon doimiy xotirasini kiriting!")
+      return no
+    else if (!vm.phone.phonePrice())
+      toastr.error("telefon bahosini kiriting!")
+      return no
+    else
+      data =
+        phoneName: vm.phone.phoneName()
+        phoneModel: vm.phone.phoneModel()
+        phoneRam: vm.phone.phoneRam()
+        phoneHdd: vm.phone.phoneHdd()
+        phonePrice: vm.phone.phonePrice()
+      $.ajax
+        url: apiUrl.addPhone
+        type: 'POST'
+        data: JSON.stringify(data)
+        dataType: 'json'
+        contentType: 'application/json'
+      .fail handleError
+      .done (response) ->
+        toastr.success(response)
+        ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
+        $("#addEmployeeModal").modal("hide")
+
+
 
 
   ko.applyBindings {vm}

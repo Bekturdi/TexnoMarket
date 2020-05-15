@@ -4,17 +4,18 @@ import akka.actor.Actor
 import akka.pattern.pipe
 import akka.util.Timeout
 import com.typesafe.scalalogging.LazyLogging
-import dao.UserDao
+import dao._
 import javax.inject.Inject
 import play.api.{Configuration, Environment}
-import protocols.AdminProtocol.{CreateUser, LoginUser, User, loginUser}
+import protocols.AdminProtocol.{AddPhone, CreateUser, LoginUser, Phone, User, loginUser}
 
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{ExecutionContext, Future}
 
 class RegistrationManager @Inject()(val environment: Environment,
                                     val configuration: Configuration,
-                                    val userDao: UserDao
+                                    val userDao: UserDao,
+                                   val phoneDao: PhoneDao
                                    )
                                    (implicit val ec: ExecutionContext)
   extends Actor with LazyLogging {
@@ -30,6 +31,9 @@ class RegistrationManager @Inject()(val environment: Environment,
 //    case LoginUser(data) =>
 //      loginUser(data).pipeTo(sender())
 //
+    case AddPhone(data) =>
+      addPhone(data).pipeTo(sender())
+
     case _ => logger.info(s"received unknown message")
   }
 
@@ -55,4 +59,17 @@ class RegistrationManager @Inject()(val environment: Environment,
 //        Right(data.username + "asda")
 //    })
 //  }
+
+  private def addPhone(data: Phone): Future[Either[String, String]] = {
+    logger.warn("managerga keldi")
+    (for {
+      response <- phoneDao.findPhone(data.phoneName)
+    } yield response match {
+      case Some(count) =>
+        Left(count.phoneName + " Bunday telefon ro`yhatga qo`shilgan!")
+      case None =>
+        phoneDao.addPhone(data)
+        Right(data.phoneName + " nomli telefon ro`yhatga muvoffaqiyatli qo`shildi!")
+    })
+  }
 }

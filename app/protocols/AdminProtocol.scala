@@ -8,6 +8,8 @@ object AdminProtocol {
 
   case class LoginUser(data: loginUser)
 
+  case class AddPhone(data: Phone)
+
   case class User(id: Option[Int] = None,
                   username: String,
                   password: String,
@@ -20,4 +22,13 @@ object AdminProtocol {
                        password: String)
 
   implicit val loginUserFormat: OFormat[loginUser] = Json.format[loginUser]
+
+  case class Phone(id: Option[Int] = None,
+                   phoneName: String,
+                   phoneModel: String,
+                   phoneRam: String,
+                   phoneHdd: String,
+                   phonePrice: String)
+
+  implicit val phoneFormat: OFormat[Phone] = Json.format[Phone]
 }

@@ -9,7 +9,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.Configuration
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
-import protocols.AdminProtocol.{CreateUser, LoginUser, User, loginUser}
+import protocols.AdminProtocol.{AddPhone, CreateUser, LoginUser, Phone, User, loginUser}
 import views.html._
 import views.html.admin.admin
 
@@ -70,5 +70,22 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
         Ok(err)
     }
   }
-}
+  }
+
+  def addPhone: Action[JsValue] = Action.async(parse.json) { implicit request => {
+    logger.warn("controllerga keldi")
+    val phoneName = (request.body \ "phoneName").as[String]
+    val phoneModel = (request.body \ "phoneModel").as[String]
+    val phoneRam = (request.body \ "phoneRam").as[String]
+    val phoneHdd = (request.body \ "phoneHdd").as[String]
+    val phonePrice = (request.body \ "phonePrice").as[String]
+    (registrationManager ? AddPhone(Phone(None, phoneName, phoneModel, phoneRam, phoneHdd, phonePrice))).mapTo[Either[String, String]].map {
+      case Right(str) =>
+        Ok(Json.toJson(str))
+      case Left(err) =>
+        Ok(err)
+    }
+  }
+  }
+
 }
