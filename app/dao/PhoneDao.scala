@@ -40,6 +40,8 @@ trait PhoneDao {
 
   def findPhone(name: String): Future[Option[Phone]]
 
+  def getPhone: Future[Seq[Phone]]
+
 }
 
 @Singleton
@@ -66,6 +68,12 @@ class PhoneDaoImpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
   override def findPhone(name: String): Future[Option[Phone]] = {
     db.run{
       phoneTable.filter(data => data.phoneName === name).result.headOption
+    }
+  }
+
+  override def getPhone: Future[Seq[Phone]] = {
+    db.run {
+      phoneTable.result
     }
   }
 }

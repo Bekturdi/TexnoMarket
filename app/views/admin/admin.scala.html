@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="@routes.Assets.versioned("assets/css/shared/style.css")">
   <link rel="stylesheet" href="@routes.Assets.versioned("assets/css/demo_1/style.css")">
   <link rel="shortcut icon" href="@routes.Assets.versioned("assets/images/favicon.png")" />
-
+  @webJarsUtil.locate("js/bootstrap.min.js").script()
   <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

@@ -9,7 +9,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.Configuration
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
-import protocols.AdminProtocol.{AddPhone, CreateUser, LoginUser, Phone, User, loginUser}
+import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, LoginUser, Phone, User, loginUser}
 import views.html._
 import views.html.admin.admin
 
@@ -88,4 +88,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
   }
   }
 
+  def getPhoneList: Action[AnyContent] = Action.async {
+    (registrationManager ? GetPhone).mapTo[Seq[Phone]].map { p =>
+      Ok(Json.toJson(p))
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
+    }
+  }
 }

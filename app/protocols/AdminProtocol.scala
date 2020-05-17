@@ -10,6 +10,8 @@ object AdminProtocol {
 
   case class AddPhone(data: Phone)
 
+  case object GetPhone
+
   case class User(id: Option[Int] = None,
                   username: String,
                   password: String,

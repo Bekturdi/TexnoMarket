@@ -27,13 +27,14 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-bind="foreach: vm.getPhoneList">
           <tr>
-            <td>1</td>
-            <td>Thomas Hardy</td>
-            <td>thomashardymail.com</td>
-            <td>89 Chiaroscuro Rd, Portland, USA</td>
-            <td>(171) 555-2222</td>
+            <td data-bind="text: $index() + 1"></td>
+            <td data-bind="text: $data.phoneName"></td>
+            <td data-bind="text: $data.phoneModel"></td>
+            <td data-bind="text: $data.phoneRam"></td>
+            <td data-bind="text: $data.phoneHdd"></td>
+            <td data-bind="text: $data.phonePrice"></td>
             <td>
               <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pen" data-toggle="tooltip" title="Edit"></i></a>
               <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>

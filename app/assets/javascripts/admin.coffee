@@ -7,6 +7,7 @@ $ ->
     createUser: '/create-user'
     loginUser: '/login-user'
     addPhone: '/add-phone'
+    getPhone: '/get-phone'
 
   Page =
     card: 'card'
@@ -30,6 +31,7 @@ $ ->
     page: Glob.page
     user: defaultUserData
     phone: defaultPhoneData
+    getPhoneList: []
 
   vm.selectedPage = (page) ->
     if (page is Page.phone)
@@ -134,6 +136,15 @@ $ ->
         ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
         $("#addEmployeeModal").modal("hide")
 
+  getPhoneList = ->
+    $.ajax
+      url: apiUrl.getPhone
+      type: "GET"
+    .fail handleError
+    .done (response) ->
+       vm.getPhoneList(response)
+
+  getPhoneList()
 
 
 
