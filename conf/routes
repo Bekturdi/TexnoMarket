@@ -7,6 +7,7 @@ POST    /login-user                 controllers.HomeController.loginUsers
 GET     /admin-page                 controllers.HomeController.adminPage
 POST    /add-phone                  controllers.HomeController.addPhone
 GET     /get-phone                  controllers.HomeController.getPhoneList
+GET     /get-user                   controllers.HomeController.getUserList
 
 
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

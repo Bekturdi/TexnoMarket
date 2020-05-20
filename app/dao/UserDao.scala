@@ -34,6 +34,8 @@ trait UserDaoComponent {
 trait UserDao {
   def createUser(data: User): Future[Int]
 
+  def getUser: Future[Seq[User]]
+
   def findUser(user: String): Future[Option[User]]
 
   def findLoginUser(data: LoginUser): Future[Option[User]]
@@ -68,6 +70,12 @@ class UserDaoImpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
   override def findLoginUser(data: LoginUser): Future[Option[User]] = {
     db.run{
       userTable.filter(user => user.username === data.username && user.password === data.password).result.headOption
+    }
+  }
+
+  override def getUser: Future[Seq[User]] = {
+    db.run {
+      userTable.result
     }
   }
 }

@@ -8,6 +8,7 @@ $ ->
     loginUser: '/login-user'
     addPhone: '/add-phone'
     getPhone: '/get-phone'
+    getUser: '/get-user'
 
   Page =
     card: 'card'
@@ -32,6 +33,7 @@ $ ->
     user: defaultUserData
     phone: defaultPhoneData
     getPhoneList: []
+    getUserList: []
 
   vm.selectedPage = (page) ->
     if (page is Page.phone)
@@ -146,6 +148,14 @@ $ ->
 
   getPhoneList()
 
+  getUserList = ->
+    $.ajax
+      url: apiUrl.getUser
+      type: "GET"
+    .fail handleError
+    .done (response) ->
+      vm.getUserList(response)
 
+  getUserList()
 
   ko.applyBindings {vm}

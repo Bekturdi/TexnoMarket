@@ -12,6 +12,8 @@ object AdminProtocol {
 
   case object GetPhone
 
+  case object GetUser
+
   case class User(id: Option[Int] = None,
                   username: String,
                   password: String,
