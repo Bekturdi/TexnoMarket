@@ -9,7 +9,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.Configuration
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
-import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, LoginUser, Phone, User, loginUser}
+import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, LoginUser, LoginUserR, Phone, User}
 import views.html._
 import views.html.admin.admin
 
@@ -31,6 +31,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
 
   implicit val defaultTimeout: Timeout = Timeout(60.seconds)
 
+  val LoginSessionKey = "login"
+
   def index = Action {
     Ok(indexTemplate(Some("card")))
   }
@@ -43,8 +45,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
     Ok(regTemplate())
   }
 
-  def adminPage = Action {
-    Ok(adminTemplate(Some("")))
+  def adminPage = Action { implicit request =>
+    request.session.get(LoginSessionKey).map{_ =>
+      Ok(adminTemplate(Some("")))
+    }.getOrElse{
+      Unauthorized
+    }
   }
 
   def createUser: Action[JsValue] = Action.async(parse.json) { implicit request => {
@@ -63,17 +69,17 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
   def loginUsers: Action[JsValue] = Action.async(parse.json) { implicit request => {
     val username = (request.body \ "username").as[String]
     val password = (request.body \ "password").as[String]
-    (registrationManager ? LoginUser(loginUser(None, username, password))).mapTo[Either[String, String]].map {
-      case Right(str) =>
-        Ok(Json.toJson(str))
+    (registrationManager ? LoginUserR(LoginUser(username, password))).mapTo[Either[String, User]].map {
+      case Right(user) =>
+        Ok(Json.toJson(user)).addingToSession(LoginSessionKey-> user.username)
       case Left(err) =>
-        Ok(err)
+        logger.error(s"error find user")
+        BadRequest(err)
     }
   }
   }
 
   def addPhone: Action[JsValue] = Action.async(parse.json) { implicit request => {
-    logger.warn("controllerga keldi")
     val phoneName = (request.body \ "phoneName").as[String]
     val phoneModel = (request.body \ "phoneModel").as[String]
     val phoneRam = (request.body \ "phoneRam").as[String]

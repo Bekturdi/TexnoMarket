@@ -7,7 +7,7 @@ import com.typesafe.scalalogging.LazyLogging
 import dao._
 import javax.inject.Inject
 import play.api.{Configuration, Environment}
-import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, LoginUser, Phone, User, loginUser}
+import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, LoginUser, LoginUserR, Phone, User}
 
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{ExecutionContext, Future}
@@ -28,9 +28,9 @@ class RegistrationManager @Inject()(val environment: Environment,
     case CreateUser(data) =>
       createUser(data).pipeTo(sender())
 
-//    case LoginUser(data) =>
-//      loginUser(data).pipeTo(sender())
-//
+    case LoginUserR(data) =>
+      loginUser(data).pipeTo(sender())
+
     case AddPhone(data) =>
       addPhone(data).pipeTo(sender())
 
@@ -51,20 +51,18 @@ class RegistrationManager @Inject()(val environment: Environment,
         Right(data.username + " nomli foydalanuvchi ro`yhatdan muvoffaqiyatli o`tdi!")
     })
   }
-//
-//  private def loginUser(data: loginUser): Future[Either[String, String]] = {
-//    (for {
-//      response <- userDao.findLoginUser(data.username)
-//    } yield response match {
-//      case Some(count) =>
-//        Left(count.username + " foydalanuvchi nomi bilan password ni to`g`ri kiriting!")
-//      case None =>
-//        Right(data.username + "asda")
-//    })
-//  }
+
+  private def loginUser(data: LoginUser): Future[Either[String, User]] = {
+   userDao.findLoginUser(data).mapTo[Option[User]].map{ user =>
+     if (user.isDefined) {
+       Right(user.get)
+     } else {
+       Left(data.username + " foydalanuvchi nomi bilan password ni to`g`ri kiriting!")
+     }
+   }
+  }
 
   private def addPhone(data: Phone): Future[Either[String, String]] = {
-    logger.warn("managerga keldi")
     (for {
       response <- phoneDao.findPhone(data.phoneName)
     } yield response match {
