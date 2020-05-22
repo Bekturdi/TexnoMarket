@@ -62,6 +62,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
         Ok(Json.toJson(str))
       case Left(err) =>
         Ok(err)
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
     }
   }
   }
@@ -71,10 +75,14 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
     val password = (request.body \ "password").as[String]
     (registrationManager ? LoginUserR(LoginUser(username, password))).mapTo[Either[String, User]].map {
       case Right(user) =>
-        Ok(Json.toJson(user)).addingToSession(LoginSessionKey-> user.username)
+        Ok(Json.toJson(user)).addingToSession(LoginSessionKey -> user.username)
       case Left(err) =>
         logger.error(s"error find user")
         BadRequest(err)
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
     }
   }
   }
@@ -90,6 +98,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
         Ok(Json.toJson(str))
       case Left(err) =>
         Ok(err)
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
     }
   }
   }
