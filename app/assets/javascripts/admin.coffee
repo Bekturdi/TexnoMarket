@@ -140,6 +140,8 @@ $ ->
         ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
         $("#addEmployeeModal").modal("hide")
 
+        getPhoneList()
+
   getPhoneList = ->
     $.ajax
       url: apiUrl.getPhone

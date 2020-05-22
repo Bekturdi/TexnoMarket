@@ -59,7 +59,6 @@ class PhoneDaoImpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
   val phoneTable = TableQuery[PhoneTable]
 
   override def addPhone(data: Phone): Future[Int] = {
-    logger.warn("dao ga keldi")
     db.run {
       (phoneTable returning phoneTable.map(_.id)) += data
     }
