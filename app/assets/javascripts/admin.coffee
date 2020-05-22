@@ -102,6 +102,8 @@ $ ->
         toastr.success(response)
         window.location.href = '/admin-page'
 
+  console.log 'session', sessionStorage.getItem("login")
+
   vm.addPhone = ->
     toastr.clear()
     if (!vm.phone.phoneName())
