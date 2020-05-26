@@ -10,6 +10,8 @@ object AdminProtocol {
 
   case class AddPhone(data: Phone)
 
+  case class UpdatePhone(update: Phone)
+
   case object GetPhone
 
   case object GetUser

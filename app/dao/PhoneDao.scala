@@ -42,6 +42,8 @@ trait PhoneDao {
 
   def getPhone: Future[Seq[Phone]]
 
+  def updatePhone(data: Phone): Future[Int]
+
 }
 
 @Singleton
@@ -75,5 +77,12 @@ class PhoneDaoImpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
       phoneTable.result
     }
   }
+
+  override def updatePhone(data: Phone): Future[Int] = {
+    db.run{
+      phoneTable.filter(_.id === data.id).update(data)
+    }
+  }
+
 }
 

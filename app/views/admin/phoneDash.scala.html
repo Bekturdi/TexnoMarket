@@ -36,7 +36,7 @@
             <td data-bind="text: $data.phoneHdd"></td>
             <td data-bind="text: $data.phonePrice"></td>
             <td>
-              <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pen" data-toggle="tooltip" title="Edit"></i></a>
+              <a href="#" data-bind="click: $root.vm.openEditForm($data)" class="edit" ><i class="fa fa-pen" data-toggle="tooltip" title="Edit"></i></a>
               <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
             </td>
           </tr>
@@ -100,35 +100,54 @@
     </div>
   </div>
     <!-- Edit Modal HTML -->
-  <div id="editEmployeeModal" class="modal fade">
+  <div id="edit_phone_modal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <form>
           <div class="modal-header">
-            <h4 class="modal-title">Edit Employee</h4>
+            <h4 class="modal-title">Telefon malumotlarini o`zgartirish</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" >
+              <label>Nomi</label>
+              <input type="text" class="form-control" placeholder="nomi" data-bind="value: vm.selectedPhone.phoneName">
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" >
+              <label>Modeli</label>
+              <input type="email" class="form-control" placeholder="model" data-bind="value: vm.selectedPhone.phoneModel">
             </div>
             <div class="form-group">
-              <label>Address</label>
-              <textarea class="form-control" ></textarea>
+              <label>Tezkor xotirasi</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="tezkor xotira" data-bind="value: vm.selectedPhone.phoneRam">
+                <div class="input-group-append">
+                  <span class="input-group-text bg-secondary" >Gb</span>
+                </div>
+              </div>
             </div>
             <div class="form-group">
-              <label>Phone</label>
-              <input type="text" class="form-control" >
+              <label>Doimiy xotirasi</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="doimiy xotira" data-bind="value: vm.selectedPhone.phoneHdd">
+                <div class="input-group-append">
+                  <span class="input-group-text bg-secondary" >Gb</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Bahosi</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="bahosi" data-bind="value: vm.selectedPhone.phonePrice">
+                <div class="input-group-append">
+                  <span class="input-group-text bg-secondary" >so`m</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-            <input type="submit" class="btn btn-info" value="Save">
+            <input type="submit" class="btn btn-info" data-bind="click: vm.updatePhone" value="Saqlash">
           </div>
         </form>
       </div>

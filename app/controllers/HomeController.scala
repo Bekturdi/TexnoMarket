@@ -9,7 +9,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.Configuration
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
-import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, GetUser, LoginUser, LoginUserR, Phone, User}
+import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, GetUser, LoginUser, LoginUserR, Phone, UpdatePhone, User}
 import views.html._
 import views.html.admin.admin
 
@@ -124,5 +124,27 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
         logger.error(s"error: $err")
         BadRequest
     }
+  }
+
+  def updatePhone = Action.async(parse.json) { implicit request => {
+    logger.error(s"sssss: ${request.body}")
+    val id = (request.body \ "id").as[Int]
+    val phoneName = (request.body \ "phoneName").as[String]
+    val phoneModel = (request.body \ "phoneModel").as[String]
+    val phoneRam = (request.body \ "phoneRam").as[String]
+    val phoneHdd = (request.body \ "phoneHdd").as[String]
+    val phonePrice = (request.body \ "phonePrice").as[String]
+    (registrationManager ? UpdatePhone(Phone(Some(id), phoneName, phoneModel, phoneRam, phoneHdd, phonePrice))).mapTo[Int].map { i =>
+      if (i != 0) {
+        Ok(Json.toJson(id + " raqamli telefon ma`lumotlari yangilandi"))
+      } else {
+        Ok("Bunday raqamli telefon topilmadi")
+      }
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
+    }
+  }
   }
 }

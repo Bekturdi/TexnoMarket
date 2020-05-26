@@ -9,6 +9,7 @@ $ ->
     addPhone: '/add-phone'
     getPhone: '/get-phone'
     getUser: '/get-user'
+    updatePhone: '/update-phone'
 
   Page =
     card: 'card'
@@ -34,6 +35,17 @@ $ ->
     phone: defaultPhoneData
     getPhoneList: []
     getUserList: []
+    id: 0
+    selected:
+      id: ''
+      name: ''
+    selectedPhone:
+      id: ''
+      phoneName: ''
+      phoneModel: ''
+      phoneRam: ''
+      phoneHdd: ''
+      phonePrice: ''
 
   vm.selectedPage = (page) ->
     if (page is Page.phone)
@@ -102,7 +114,6 @@ $ ->
         toastr.success(response)
         window.location.href = '/admin-page'
 
-  console.log 'session', sessionStorage.getItem("login")
 
   vm.addPhone = ->
     toastr.clear()
@@ -161,5 +172,38 @@ $ ->
       vm.getUserList(response)
 
   getUserList()
+
+  vm.openEditForm = (data) -> ->
+    console.log("data:", data)
+    vm.selectedPhone.id data.id
+    vm.selectedPhone.phoneName data.phoneName
+    vm.selectedPhone.phoneModel data.phoneModel
+    vm.selectedPhone.phoneRam data.phoneRam
+    vm.selectedPhone.phoneHdd data.phoneHdd
+    vm.selectedPhone.phonePrice data.phonePrice
+    $('#edit_phone_modal').modal("show")
+
+
+  vm.updatePhone =  ->
+   data =
+     id: vm.selectedPhone.id()
+     phoneName: vm.selectedPhone.phoneName()
+     phoneModel: vm.selectedPhone.phoneModel()
+     phoneRam: vm.selectedPhone.phoneRam()
+     phoneHdd: vm.selectedPhone.phoneHdd()
+     phonePrice: vm.selectedPhone.phonePrice()
+   $.ajax
+     url: apiUrl.updatePhone
+     type: 'POST'
+     data: JSON.stringify(data)
+     dataType: 'json'
+     contentType: 'application/json'
+   .fail handleError
+   .done (response) ->
+     toastr.success(response)
+     $('#edit_phone_modal').modal("hide")
+     ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
+     getPhoneList()
+
 
   ko.applyBindings {vm}
