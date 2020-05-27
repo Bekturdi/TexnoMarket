@@ -10,6 +10,7 @@ $ ->
     getPhone: '/get-phone'
     getUser: '/get-user'
     updatePhone: '/update-phone'
+    deletePhone: '/delete-phone'
 
   Page =
     card: 'card'
@@ -114,7 +115,6 @@ $ ->
         toastr.success(response)
         window.location.href = '/admin-page'
 
-
   vm.addPhone = ->
     toastr.clear()
     if (!vm.phone.phoneName())
@@ -185,25 +185,45 @@ $ ->
 
 
   vm.updatePhone =  ->
-   data =
-     id: vm.selectedPhone.id()
-     phoneName: vm.selectedPhone.phoneName()
-     phoneModel: vm.selectedPhone.phoneModel()
-     phoneRam: vm.selectedPhone.phoneRam()
-     phoneHdd: vm.selectedPhone.phoneHdd()
-     phonePrice: vm.selectedPhone.phonePrice()
-   $.ajax
-     url: apiUrl.updatePhone
-     type: 'POST'
-     data: JSON.stringify(data)
-     dataType: 'json'
-     contentType: 'application/json'
-   .fail handleError
-   .done (response) ->
-     toastr.success(response)
-     $('#edit_phone_modal').modal("hide")
-     ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
-     getPhoneList()
+     data =
+       id: vm.selectedPhone.id()
+       phoneName: vm.selectedPhone.phoneName()
+       phoneModel: vm.selectedPhone.phoneModel()
+       phoneRam: vm.selectedPhone.phoneRam()
+       phoneHdd: vm.selectedPhone.phoneHdd()
+       phonePrice: vm.selectedPhone.phonePrice()
+     $.ajax
+       url: apiUrl.updatePhone
+       type: 'POST'
+       data: JSON.stringify(data)
+       dataType: 'json'
+       contentType: 'application/json'
+     .fail handleError
+     .done (response) ->
+       toastr.success(response)
+       $('#edit_phone_modal').modal("hide")
+       ko.mapping.fromJS(defaultPhoneData, {}, vm.phone)
+       getPhoneList()
 
+  vm.deletePhoneForm = (data) -> ->
+    console.log("adads")
+    vm.selectedPhone.id(data.id)
+    $('#delete_phone_modal').modal("show")
+
+  vm.deletePhone = ->
+    data =
+      id: vm.selectedPhone.id()
+    $.ajax
+      url: apiUrl.deletePhone
+      type: 'DELETE'
+      data: JSON.stringify(data)
+      dataType: 'json'
+      contentType: 'application/json'
+    .fail handleError
+    .done (response) ->
+      $('#close_phone_modal').click()
+      toastr.success(response)
+      getPhoneList()
+      $(this).parents('tr').remove()
 
   ko.applyBindings {vm}

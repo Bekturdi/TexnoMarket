@@ -12,6 +12,8 @@ object AdminProtocol {
 
   case class UpdatePhone(update: Phone)
 
+  case class DeletePhone(id: Int)
+
   case object GetPhone
 
   case object GetUser

@@ -9,6 +9,7 @@ POST    /add-phone                  controllers.HomeController.addPhone
 GET     /get-phone                  controllers.HomeController.getPhoneList
 GET     /get-user                   controllers.HomeController.getUserList
 POST    /update-phone               controllers.HomeController.updatePhone
+DELETE  /delete-phone               controllers.HomeController.deletePhone
 
 
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

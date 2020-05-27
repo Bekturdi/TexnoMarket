@@ -9,7 +9,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.Configuration
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
-import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, GetUser, LoginUser, LoginUserR, Phone, UpdatePhone, User}
+import protocols.AdminProtocol.{AddPhone, CreateUser, DeletePhone, GetPhone, GetUser, LoginUser, LoginUserR, Phone, UpdatePhone, User}
 import views.html._
 import views.html.admin.admin
 
@@ -46,9 +46,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
   }
 
   def adminPage = Action { implicit request =>
-    request.session.get(LoginSessionKey).map{_ =>
+    request.session.get(LoginSessionKey).map { _ =>
       Ok(adminTemplate(Some("")))
-    }.getOrElse{
+    }.getOrElse {
       Unauthorized
     }
   }
@@ -108,7 +108,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
 
   def getPhoneList: Action[AnyContent] = Action.async {
     (registrationManager ? GetPhone).mapTo[Seq[Phone]].map { p =>
-      Ok(Json.toJson(p))
+      Ok(Json.toJson(p.sortBy(_.id)))
     }.recover {
       case err =>
         logger.error(s"error: $err")
@@ -147,4 +147,20 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
     }
   }
   }
+
+  def deletePhone = Action.async(parse.json) { implicit request => {
+    val id = (request.body \ "id").as[Int]
+    (registrationManager ? DeletePhone(id)).mapTo[Int].map { i =>
+      if (i != 0) {
+        Ok(Json.toJson(id + " raqamli telefon malumotlari o`chirildi"))
+      } else {
+        Ok("Bunday raqamli telefon topilmadi")
+      }
+    }.recover {
+      case err =>
+        logger.error(s"error: $err")
+        BadRequest
+    }
+  }
+    }
 }

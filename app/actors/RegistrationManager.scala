@@ -7,7 +7,7 @@ import com.typesafe.scalalogging.LazyLogging
 import dao._
 import javax.inject.Inject
 import play.api.{Configuration, Environment}
-import protocols.AdminProtocol.{AddPhone, CreateUser, GetPhone, GetUser, LoginUser, LoginUserR, Phone, UpdatePhone, User}
+import protocols.AdminProtocol.{AddPhone, CreateUser, DeletePhone, GetPhone, GetUser, LoginUser, LoginUserR, Phone, UpdatePhone, User}
 
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{ExecutionContext, Future}
@@ -42,6 +42,9 @@ class RegistrationManager @Inject()(val environment: Environment,
 
     case UpdatePhone(data) =>
       updatePhone(data).pipeTo(sender())
+
+    case DeletePhone(id) =>
+      deletePhone(id).pipeTo(sender())
 
     case _ => logger.info(s"received unknown message")
   }
@@ -90,5 +93,9 @@ class RegistrationManager @Inject()(val environment: Environment,
 
   private def updatePhone(data: Phone): Future[Int] = {
     phoneDao.updatePhone(data)
+  }
+
+  private def deletePhone(id: Int): Future[Int] = {
+    phoneDao.deletePhone(id)
   }
 }
