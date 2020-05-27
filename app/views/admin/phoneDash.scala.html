@@ -20,11 +20,11 @@
         <thead>
           <tr>
             <th>id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Actions</th>
+            <th>Nomi</th>
+            <th>Modeli</th>
+            <th>Tezkor xotira</th>
+            <th>Doimiy xotira</th>
+            <th>Bahosi</th>
           </tr>
         </thead>
         <tbody data-bind="foreach: vm.getPhoneList">
@@ -150,7 +150,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Orqaga">
             <input type="submit" class="btn btn-info" data-bind="click: vm.updatePhone" value="Saqlash">
           </div>
         </form>
@@ -163,12 +163,11 @@
       <div class="modal-content">
         <form>
           <div class="modal-header">
-            <h4 class="modal-title">Delete Employee</h4>
+            <h4 class="modal-title">Telefon malumotini o`chirish</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
-            <p>Are you sure you want to delete these Records?</p>
-            <p class="text-warning"><small>This action cannot be undone.</small></p>
+            <p class="text-center text-danger">Shu telefon malumotlarini o`chirishga ishonchingiz komilmi?</p>
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" id="close_phone_modal" value="Cancel">
