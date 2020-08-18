@@ -1,19 +1,19 @@
 @import controllers.routes
 @()
 
-<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/phoneDash.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/tabledash.css")">
 
-<div data-bind="visible: vm.page() == 'phoneDash'">
+<div data-bind="visible: vm.page() == 'computerDash'">
   <div class="container">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6">
-            <h2><b>Telefonlar</b></h2>
+            <h2><b>Kompyuterlar</b></h2>
           </div>
           <div class="col-sm-6">
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus"></i>
-              Yangi telefon qo`shish</a>
+            <a href="#addComputer1" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus"></i>
+              Yangi Kompyuter qo`shish</a>
           </div>
         </div>
       </div>
@@ -22,26 +22,29 @@
           <tr>
             <th>id</th>
             <th>Nomi</th>
-            <th>Modeli</th>
+            <th>Protsessori</th>
+            <th>Chastotasi</th>
             <th>Tezkor xotira</th>
             <th>Doimiy xotira</th>
+            <th>Video karta</th>
+            <th>Rangi</th>
             <th>Bahosi</th>
           </tr>
         </thead>
-        <tbody data-bind="foreach: vm.getPhoneList">
+        <tbody data-bind="foreach: ">
           <tr>
-            <td data-bind="text: $index() + 1"></td>
-            <td data-bind="text: $data.phoneName"></td>
-            <td data-bind="text: $data.phoneModel"></td>
-            <td data-bind="text: $data.phoneRam"></td>
-            <td data-bind="text: $data.phoneHdd"></td>
-            <td data-bind="text: $data.phonePrice"></td>
+            <td data-bind="@*text: $index() + 1*@"></td>
+            <td data-bind="@*text: $data.phoneName*@"></td>
+            <td data-bind="@*text: $data.phoneModel*@"></td>
+            <td data-bind="@*text: $data.phoneRam*@"></td>
+            <td data-bind="@*text: $data.phoneHdd*@"></td>
+            <td data-bind="@*text: $data.phonePrice*@"></td>
             <td>
               <span>
-                <a href="#" data-bind="click: $root.vm.openEditForm($data)" class="edit" ><i class="fa fa-pen" data-toggle="tooltip" title="Edit"></i></a>
+                <a href="#" data-bind="@*click: $root.vm.openEditForm($data)*@" class="edit" ><i class="fa fa-pen" data-toggle="tooltip" title="Edit"></i></a>
               </span>
               <span>
-                <a href="#" data-bind="click: $root.vm.deletePhoneForm($data)" class="delete" ><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                <a href="#" data-bind="@*click: $root.vm.deletePhoneForm($data)*@" class="delete" ><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
               </span>
             </td>
           </tr>
@@ -50,12 +53,12 @@
     </div>
   </div>
     <!-- Add Modal HTML -->
-  <div id="addEmployeeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addDocumentTypeTitle" aria-hidden="true">
+  <div id="addComputer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addDocumentTypeTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <form class="">
           <div class="modal-header px-3">
-            <h4 class="modal-title" id="addDocumentTitle">Telefon qo`shish</h4>
+            <h4 class="modal-title" id="addDocumentTitle">Kompyuter qo`shish</h4>
             <button type="button" class="close pl-4" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body px-3">
@@ -64,7 +67,7 @@
               <input type="text" class="form-control" placeholder="nomi" data-bind="value: vm.phone.phoneName">
             </div>
             <div class="form-group">
-              <label>Modeli</label>
+              <label>Potsessori</label>
               <input type="email" class="form-control" placeholder="model" data-bind="value: vm.phone.phoneModel">
             </div>
             <div class="form-group">
@@ -78,7 +81,7 @@
             </div>
             <div class="form-group">
               <label>Doimiy xotirasi</label>
-              <div class="input-group">
+              <div class="input -group">
                 <input type="text" class="form-control" placeholder="doimiy xotira" data-bind="value: vm.phone.phoneHdd">
                 <div class="input-group-append">
                   <span class="input-group-text bg-secondary" >Gb</span>

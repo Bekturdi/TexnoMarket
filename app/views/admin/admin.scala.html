@@ -1,6 +1,6 @@
 @this(webJarsUtil: org.webjars.play.WebJarsUtil)
 @(page: Option[String])
-  @import views.html.admin.phoneDash
+@import views.html.admin._
   @main("Admin page", webJarsUtil) {
     <script>
             var Glob = {
@@ -200,7 +200,7 @@
                     <a class="nav-link" href="" data-bind="click: vm.selectedPage.bind($data, 'phoneDash')">Telefonlar</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">Kompyuterlar</a>
+                    <a class="nav-link" href="" data-bind="click: vm.selectedPage.bind($data, 'computerDash')">Kompyuterlar</a>
                   </li>
                 </ul>
               </div>
@@ -231,6 +231,7 @@
             <div class="row page-title-header">
               <div class="col-12">
                 @phoneDash()
+                @computerDash()
               </div>
             </div>
           </div>
